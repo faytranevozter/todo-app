@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@ai-hero/sandcastle": "file:../../devops-project/sandcastle"
+  }
+}
