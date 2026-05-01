@@ -36,7 +36,7 @@ func TestCORSHeaders(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	allowOrigin := w.Header().Get("Access-Control-Allow-Origin")
-	if allowOrigin == "" {
-		t.Error("Expected Access-Control-Allow-Origin header")
+	if allowOrigin != "http://localhost:5173" {
+		t.Errorf("Expected 'http://localhost:5173', got '%s'", allowOrigin)
 	}
 }

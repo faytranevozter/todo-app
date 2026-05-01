@@ -6,18 +6,28 @@ export default function Health() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const controller = new AbortController();
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
     
-    fetch(`${apiUrl}/api/health`)
-      .then(res => res.json())
+    fetch(`${apiUrl}/api/health`, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Backend returned ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
         setStatus(data.status);
         setLoading(false);
       })
       .catch(err => {
-        setError(err.message);
-        setLoading(false);
+        if (err.name !== 'AbortError') {
+          setError(err.message);
+          setLoading(false);
+        }
       });
+
+    return () => controller.abort();
   }, []);
 
   return (
