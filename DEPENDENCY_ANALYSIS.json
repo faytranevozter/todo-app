@@ -1,0 +1,62 @@
+{
+  "issues": [
+    {
+      "id": "1",
+      "title": "PRD: Todo App — React + Tailwind 4 + Go + PostgreSQL",
+      "branch": "sandcastle/issue-1-prd-todo-app"
+    },
+    {
+      "id": "2",
+      "title": "Project Scaffolding: Vite + React + Tailwind 4 frontend & Go + chi backend",
+      "branch": "sandcastle/issue-2-project-scaffolding"
+    }
+  ],
+  "dependency_graph": {
+    "issue_1": {
+      "blocks": [],
+      "blocked_by": []
+    },
+    "issue_2": {
+      "blocks": ["3"],
+      "blocked_by": []
+    },
+    "issue_3": {
+      "blocks": ["4"],
+      "blocked_by": ["2"]
+    },
+    "issue_4": {
+      "blocks": ["5"],
+      "blocked_by": ["3"]
+    },
+    "issue_5": {
+      "blocks": ["6", "10"],
+      "blocked_by": ["4"]
+    },
+    "issue_6": {
+      "blocks": ["7", "8", "9"],
+      "blocked_by": ["5"]
+    },
+    "issue_7": {
+      "blocks": [],
+      "blocked_by": ["6"]
+    },
+    "issue_8": {
+      "blocks": [],
+      "blocked_by": ["6"]
+    },
+    "issue_9": {
+      "blocks": [],
+      "blocked_by": ["6"]
+    },
+    "issue_10": {
+      "blocks": [],
+      "blocked_by": ["5"]
+    }
+  },
+  "summary": {
+    "total_issues": 10,
+    "unblocked_issues": 2,
+    "blocked_issues": 8,
+    "critical_path": ["2", "3", "4", "5", "6"]
+  }
+}
